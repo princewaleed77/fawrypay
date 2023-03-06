@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     use HasFactory;
+    
+    
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
+    public function users()
+    {
+        return $this->belongsToMany(user::class);
+    }
+    
 }
