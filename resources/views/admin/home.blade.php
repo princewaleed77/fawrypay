@@ -3,17 +3,16 @@
     Home
 @endsection
 @section('content')
-    @foreach ($activities as $item)
-        <ul class="list-group">
+    <ul class="list-group">
+        @foreach ($activities as $item)
             <li class="list-group-item">{{ $item->id }}</li>
             <li class="list-group-item">{{ $item->name }}</li>
             <li class="list-group-item">{{ $item->address }}</li>
             <li class="list-group-item">{{ $item->details }}</li>
             <li class="list-group-item">{{ $item->fees }}</li>
-        </ul>
-    @endforeach
+        @endforeach
+    </ul>
 @endsection
 
 @section('header')
-    
 @endsection
