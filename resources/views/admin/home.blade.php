@@ -4,12 +4,12 @@
 @endsection
 @section('content')
     <ul class="list-group">
-        @foreach ($activities as $item)
-            <li class="list-group-item">{{ $item->id }}</li>
-            <li class="list-group-item">{{ $item->name }}</li>
-            <li class="list-group-item">{{ $item->address }}</li>
-            <li class="list-group-item">{{ $item->details }}</li>
-            <li class="list-group-item">{{ $item->fees }}</li>
+        @foreach ($activities as $activity)
+            <li class="list-group-item"> {{ $activity->id }}</li>
+            <li class="list-group-item"> {{ $activity->name }}</li>
+            <li class="list-group-item"> {{ $activity->address }}</li>
+            <li class="list-group-item"> {{ $activity->details }}</li>
+            <li class="list-group-item"> {{ $activity->fees }}</li>
         @endforeach
     </ul>
 @endsection
