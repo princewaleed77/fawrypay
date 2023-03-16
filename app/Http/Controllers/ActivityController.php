@@ -13,5 +13,6 @@ class ActivityController extends Controller
         return view('admin.home',[
             'activities'=> $activities
         ]);
+        
     }
 }

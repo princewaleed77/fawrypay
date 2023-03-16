@@ -14,5 +14,4 @@
     </ul>
 @endsection
 
-@section('header')
-@endsection
+
