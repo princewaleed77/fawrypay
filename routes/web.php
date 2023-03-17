@@ -16,10 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/',[ActivityController::class,'show'])->name('activity.show');
+
+
 
 Route::get('login',[LoginController::class,'index'])->name('login');
 Route::get('register',[RegisterController::class,'register'])->name('register');
 Route::get('activities',[ActivityController::class,'index'])->name('activities');
+Route::get('posts/show/{id}',[ActivityController::class,'show'])->name('activity.show');
+Route::get('posts',[ActivityController::class,'pay'])->name('users.pay');
