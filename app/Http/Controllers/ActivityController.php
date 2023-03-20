@@ -27,7 +27,7 @@ class ActivityController extends Controller
     {
         // $activity = Activity::findOrFail($id);
         //        return response()->json($activity);
-$post = $this->fatoorah->buildRequest('https://jsonplaceholder.typicode.com/posts/'.$id,'GET');
+        $post = $this->fatoorah->buildRequest('https://jsonplaceholder.typicode.com/posts/' . $id, 'GET');
         return view('welcome', compact('post'));
     }
 
@@ -35,10 +35,9 @@ $post = $this->fatoorah->buildRequest('https://jsonplaceholder.typicode.com/post
     public function pay()
     {
         $response = $this->fatoorah->buildRequest('https://jsonplaceholder.typicode.com/posts', 'GET');
-       
-            // return $response;
-        
+
+        // return $response;
+      
         return view('home', ['response' => $response]);
     }
-    
 }
