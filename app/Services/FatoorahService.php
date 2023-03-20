@@ -4,6 +4,7 @@ namespace App\Services;
 
 use http\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 
 class FatoorahService
@@ -21,17 +22,15 @@ private $base_url;
         'content_type'=>'application/json',
         'authorization'=>'Bearer' .env('token')
     ];
-
+    
 }
+
  public function buildRequest($uri, $method, $data =[])
+
 {
-    $request = HTTP::withHeaders($this->headers)->get($this->base_url.$uri, $method, $this->headers);
+    $request = HTTP::withHeaders($this->headers)->get($this->base_url.$uri, $method);   
     $response = json_decode($request->body());
     return $response;
 }
-
-
-
-
 
 }

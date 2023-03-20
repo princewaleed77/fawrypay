@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
 
-    <table class="table table-striped table-hover table-dark">
+    <table class="table table-striped table-hover table-light">
         <thead>
             <tr>
                 <th>UserId</th>
@@ -19,7 +19,6 @@
         </thead>
         <tbody>
             @foreach ($response as $item)
-            
             <tr>
                 <td>{{ $item->userId }}</td>
                 <td>{{ $item->id }}</td>

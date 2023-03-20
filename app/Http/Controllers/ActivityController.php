@@ -27,17 +27,16 @@ class ActivityController extends Controller
     {
         // $activity = Activity::findOrFail($id);
         //        return response()->json($activity);
-        $post = $this->fatoorah->buildRequest('https://jsonplaceholder.typicode.com/posts/' . $id, 'GET');
+        $post = $this->fatoorah->buildRequest('posts/' . $id, 'GET');
         return view('welcome', compact('post'));
     }
 
 
     public function pay()
     {
-        $response = $this->fatoorah->buildRequest('https://jsonplaceholder.typicode.com/posts', 'GET');
-
-        // return $response;
-      
+        $response = $this->fatoorah->buildRequest('posts', 'GET');
+        
         return view('home', ['response' => $response]);
     }
+    
 }
