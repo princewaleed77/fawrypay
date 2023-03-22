@@ -35,8 +35,18 @@ class ActivityController extends Controller
     public function pay()
     {
         $response = $this->fatoorah->buildRequest('posts');
-        
+
         return view('home', ['response' => $response]);
     }
+
     
+    public function addPost()
+    {
+        $request = $this->fatoorah->sendData('posts', ['test','Test']);
+        return $request;
+    }
+
+
+
+
 }
