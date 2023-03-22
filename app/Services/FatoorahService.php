@@ -31,6 +31,7 @@ class FatoorahService
         $response = json_decode($request->body());
         return $response;
     }
+    
     public function sendData($uri, $data = [])
     {
         $request = Http::withHeaders($this->headers)->post($this->base_url . $uri, $data);
