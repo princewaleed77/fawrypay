@@ -27,14 +27,14 @@ class ActivityController extends Controller
     {
         // $activity = Activity::findOrFail($id);
         //        return response()->json($activity);
-        $post = $this->fatoorah->buildRequest('posts/' . $id, 'GET');
+        $post = $this->fatoorah->buildRequest('posts/' . $id);
         return view('welcome', compact('post'));
     }
 
 
     public function pay()
     {
-        $response = $this->fatoorah->buildRequest('posts', 'GET');
+        $response = $this->fatoorah->buildRequest('posts');
         
         return view('home', ['response' => $response]);
     }

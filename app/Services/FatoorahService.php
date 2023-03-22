@@ -22,15 +22,20 @@ private $base_url;
         'content_type'=>'application/json',
         'authorization'=>'Bearer' .env('token')
     ];
-    
+
 }
 
- public function buildRequest($uri, $method, $data =[])
+ public function buildRequest($uri, $data =[])
 
 {
-    $request = HTTP::withHeaders($this->headers)->get($this->base_url.$uri, $method);   
+    $request = HTTP::withHeaders($this->headers)->get($this->base_url.$uri);   
     $response = json_decode($request->body());
     return $response;
+}
+public function sendData($uri, $data = [])
+{
+    $request = Http::withHeaders($this->headers)->post($this->base_url.$uri,$data);
+    return $request;
 }
 
 }
