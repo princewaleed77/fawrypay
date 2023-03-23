@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
 
-    <table class="table table-striped table-hover table-border table-middle table-info">
+    <table class="table table-striped table-hover table-border table-middle table-dark">
         <thead>
             <tr>
                 <th>UserId</th>

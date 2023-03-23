@@ -39,12 +39,17 @@ class ActivityController extends Controller
         return view('home', ['response' => $response]);
     }
 
-    
+
     public function addPost()
+
     {
-        $request = $this->fatoorah->sendData('posts', ['test','Test']);
-        return $request;
+        $activities = Activity::all();
+
+        $request = $this->fatoorah->sendData('posts', ['activities'=>$activities]);
+        return $request->json();
+//        return redirect()->route('users.pay')->with($activities);
     }
+
 
 
 

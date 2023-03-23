@@ -25,3 +25,4 @@ Route::get('register',[RegisterController::class,'register'])->name('register');
 Route::get('activities',[ActivityController::class,'index'])->name('activities');
 Route::get('posts/show/{id}',[ActivityController::class,'show'])->name('activity.show');
 Route::get('posts',[ActivityController::class,'pay'])->name('users.pay');
+Route::get('posts/add',[ActivityController::class,'addPost'])->name('posts.add');
