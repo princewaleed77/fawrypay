@@ -15,14 +15,14 @@
                 <th>Title</th>
                 <th>Body</th>
             </tr>
-            
+
         </thead>
         <tbody>
             @foreach ($response as $item)
             <tr>
                 <td>{{ $item->userId }}</td>
                 <td>{{ $item->id }}</td>
-                <td>{{ $item->title }}</td>
+                <td>{{ $item->data->invoiceURL }}</td>
                 <td>{{ $item->body }}</td>
             </tr>
             @endforeach

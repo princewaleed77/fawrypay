@@ -1,5 +1,5 @@
 <?php
- 
+
 use App\Services\FatoorahServices;
 use Illuminate\Support\Facades\Request;
 
@@ -9,43 +9,43 @@ class FatoorahController  {
     {
 
         /********
-         * 
+         *
          *  Here, write the code to save the order, add the products to it, and calculate the total price
-         * 
-         * 
+         *
+         *
          ********/
 
         $fatoorahServices = new FatoorahServices();
         $payment = new OrderPayment();
-       
+
         $data = [
             "CustomerName" => 'customer_name',
-             "Notificationoption"=> "LNK",  
+             "Notificationoption"=> "LNK",
             "Invoicevalue" =>'100',// total_price
-            "CustomerEmail" => 'customer_email',     
+            "CustomerEmail" => 'customer_email',
             "CalLBackUrl"=>'https://google.com/',
-            "Errorurl"=> 'https://youtube.com/',  
+            "Errorurl"=> 'https://youtube.com/',
             "Languagn"=> 'en',
             "DisplayCurrencyIna"=>'SAR'
         ];
         $response = $fatoorahServices->sendPayment($data);
-        
+
         if(isset($response['IsSuccess']))
         if($response['IsSuccess']==true){
 
-            $InvoiceId  = $response['Data']['InvoiceId']  ; // save this id with your order table 
+            $InvoiceId  = $response['Data']['InvoiceId']  ; // save this id with your order table
             $InvoiceURL = $response['Data']['InvoiceURL'] ;
-              
+
         }
             return redirect($response['Data']['InvoiceURL']);// redirect for this link to view payment page
      }
 
 
 
-    
+
     public function callback(Request $request)
     {
-        $apiKey = 'your_token';
+        $apiKey = env('fatoora_token');
         $postFields = [
             'Key'     => $request->paymentId,
             'KeyType' => 'paymentId'
@@ -60,9 +60,9 @@ class FatoorahController  {
                     if( $your_order_total_price==$response->Data->InvoiceValue){
 
                     /**
-                     * 
+                     *
                      * The payment has been completed successfully. You can change the status of the order
-                     * 
+                     *
                      */
 
                     }
@@ -72,6 +72,6 @@ class FatoorahController  {
     }
 
 
-       
+
 
 }

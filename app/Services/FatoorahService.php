@@ -17,24 +17,29 @@ class FatoorahService
     public function __construct(Http $client)
     {
         $this->client = $client;
-        $this->base_url = env('base_url');
+        $this->base_url = env('FATOORAH_BASE_URL');
         $this->headers = [
-            'content_type' => 'application/json',
-            'authorization' => 'Bearer' . env('token')
+            'Content_Type' => 'application/json',
+            'authorization' => 'Bearer' . env('API_TOKEN')
         ];
     }
 
     public function buildRequest($uri, $data = [])
 
     {
-        $request = HTTP::withHeaders($this->headers)->get($this->base_url . $uri);
-        $response = json_decode($request->body());
+        $response = Http::withHeaders($this->headers)->post($this->base_url . $uri , $this->headers);
+        $response = json_decode($response->getBody(), true);
+        // dd($response);
         return $response;
     }
 
     public function sendData($uri, $data = [])
     {
-        $request = Http::withHeaders($this->headers)->post($this->base_url . $uri, $data);
-        return $request;
+        
+        $response = $this->buildRequest($this->base_url.$uri, $data);
+        // $request = HTTP::withHeaders($this->headers)->post( $this->base_url.$uri, $data);
+        return $response;
     }
+
+
 }
