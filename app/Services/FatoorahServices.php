@@ -1,5 +1,6 @@
 <?php
 namespace App\Services;
+
 use App\ModelTax;
 use GuzzleHttp\Client;
 use Illuminate\Database\Eloguent\Model;
@@ -12,7 +13,7 @@ class FatoorahServices{
     public function __construct(Client $request_client){
        $this->request_client = $request_client;
        $this->base_url =env('fatoora_base_url','https://apitest.myfatoorah.com/');
-    
+
           $this->headers= [
            "Content-Type" =>'application/json',
            "authorization" => 'Bearer '.env("fatoora_token","fatoora_token")

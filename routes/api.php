@@ -18,6 +18,8 @@ use App\Http\Controllers\ActivityController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('send',[ActivityController::class,'send'])->name('posts.add');
 
 Route::post('pay',[ActivityController::class,'pay'])->name('api.pay');
+Route::post('send',[ActivityController::class,'send'])->name('api.send');
+Route::post('accept',[ActivityController::class,'accept'])->name('api.accept');
+Route::post('checkOut',[ActivityController::class,'checkOut'])->name('api.checkOut');

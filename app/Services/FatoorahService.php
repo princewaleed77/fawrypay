@@ -2,44 +2,50 @@
 
 namespace App\Services;
 
-use http\Client;
-use Illuminate\Http\Request;
+use GuzzleHttp\Psr7\Header;
+use http\Message\Body;
+use Illuminate\Http\Client\Request;
+//use http\Client;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client;
 
 class FatoorahService
 {
 
-    private $client;
+    private $request;
     private $headers;
     private $base_url;
+    private $response;
 
-    public function __construct(Http $client)
+    public function __construct($base_url, $headers)
     {
-        $this->client = $client;
-        $this->base_url = env('FATOORAH_BASE_URL');
-        $this->headers = [
-            'Content_Type' => 'application/json',
-            'authorization' => 'Bearer' . env('API_TOKEN')
-        ];
+
+        $this->base_url = $base_url;
+        $this->headers = $headers;
+
     }
 
-    public function buildRequest($uri, $data = [])
+    public function buildRequest($uri, $data=[])
 
     {
-        $response = Http::withHeaders($this->headers)->post($this->base_url . $uri , $this->headers);
-        $response = json_decode($response->getBody(), true);
+        $this->headers = [
+            'accept'=>'application/json',
+            'api_token' =>  env('PAY_MOB_API_KEY')
+        ];
+        
+        $response = Http::withHeaders($this->headers)->post($this->base_url.$uri, $data);
         // dd($response);
-        return $response;
+
+        return $response->body();
     }
 
     public function sendData($uri, $data = [])
     {
-        
+
         $response = $this->buildRequest($this->base_url.$uri, $data);
         // $request = HTTP::withHeaders($this->headers)->post( $this->base_url.$uri, $data);
+       
         return $response;
     }
-
-
 }

@@ -28,4 +28,4 @@ Route::get('register',[RegisterController::class,'register'])->name('register');
 Route::get('fatoora',[MyFatoorahController::class,'index'])->name('activities');
 Route::get('posts/show/{id}',[ActivityController::class,'show'])->name('activity.show');
 Route::post('pay',[MyFatoorahController::class,'checkout'])->name('users.pay');
-Route::post('send',[ActivityController::class,'send'])->name('posts.add');
+Route::get('send',[ActivityController::class,'send'])->name('posts.add');
