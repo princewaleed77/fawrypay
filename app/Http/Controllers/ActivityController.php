@@ -18,8 +18,8 @@ class ActivityController extends Controller
         $base_url = env('PAY_MOB_URL');
         $requestData = [
             'api' => env('PAY_MOB_API_KEY'),
-            'username' => '01062013832',
-            'password' => 'N0w@y1nnn'
+            'username' => '77676767676767',
+            'password' => 'password'
         ];
         $response = Http::post($base_url . 'auth/tokens', $requestData)->json();
         $auth_token = $response['token'];
@@ -93,5 +93,5 @@ class ActivityController extends Controller
         $checkOutToken = $this->accept();
         return redirect("https://accept.paymobsolutions.com/api/acceptance/iframes/740076?payment_token=$checkOutToken");
     }
-    
+
 }
