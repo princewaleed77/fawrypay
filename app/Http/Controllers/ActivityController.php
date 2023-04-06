@@ -77,7 +77,7 @@ class ActivityController extends Controller
                 "state" => "Utah"
             ],
             'currency' => 'EGP',
-            'integration_id' => 3517939, //your dashboard  payment integeration id from your settings
+            'integration_id' => 7777777, //your dashboard  payment integeration id from your settings
         ])->json();
 
         $checkOutToken = $response['token'];
