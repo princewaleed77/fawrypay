@@ -91,7 +91,7 @@ class ActivityController extends Controller
         $this->pay();
         $this->send();
         $checkOutToken = $this->accept();
-        return redirect("https://accept.paymobsolutions.com/api/acceptance/iframes/740076?payment_token=$checkOutToken");
+        return redirect("https://accept.paymobsolutions.com/api/acceptance/iframes/{{ your frame id }}?payment_token=$checkOutToken");
     }
 
 }
