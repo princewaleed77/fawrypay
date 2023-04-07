@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('pay',[ActivityController::class,'pay'])->name('api.pay');
-Route::post('send',[ActivityController::class,'send'])->name('api.send');
-Route::post('accept',[ActivityController::class,'accept'])->name('api.accept');
-Route::post('checkOut',[ActivityController::class,'checkOut'])->name('api.checkOut');
+Route::post('pay',[ActivityController::class,'getToken'])->name('api.pay');
+Route::post('send',[ActivityController::class,'sendPayment'])->name('api.send');
+Route::post('accept',[ActivityController::class,'getPaymentToken'])->name('api.accept');
+Route::post('checkout',[ActivityController::class,'checkOut'])->name('api.checkOut');
